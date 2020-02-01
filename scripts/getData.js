@@ -53,10 +53,10 @@ form.addEventListener('submit',(e)=>{
 				clearInterval(timeId)
 				userAnswers.push(catchingUserAnswer(radio))
 				gettingData__findingRightAnswer()
-				 setTimeout(() => {
-					 form.style.display = 'none'
-					 question.style.display = 'none' 
-				 }, 1000);
+				//  setTimeout(() => {
+				// 	 form.style.display = 'none'
+				// 	 question.style.display = 'none' 
+				//  }, 1000);
 				//finishUp
 			} if (count <= 10) {
 				userAnswers.push(catchingUserAnswer(radio))
@@ -82,12 +82,12 @@ function countDown(){
   timer.innerHTML=startTime
   startTime--
  if(startTime==-1){
-	 setTimeout(() => {
-		 form.style.display = 'none'
-		 question.style.display = 'none' 
-		 userAnswers.push(catchingUserAnswer(radio))
-		 gettingData__findingRightAnswer()
-	 }, 1800)
+	//  setTimeout(() => {
+	// 	 form.style.display = 'none'
+	// 	 question.style.display = 'none' 
+	// 	 userAnswers.push(catchingUserAnswer(radio))
+	// 	 gettingData__findingRightAnswer()
+	//  }, 1800)
 }
 }
 
@@ -141,6 +141,7 @@ function  tallyAnswers(arr1,arr2){
 function creatingRandomOrder(obj){
    
 	let randomval = []
+	console.log(obj)
 	let valArr = Object.values(obj)
 	valArr.splice(0, 1)
 	while(randomval.length<valArr.length){
@@ -165,3 +166,9 @@ function populateQuiz(result,arr){
 	label4.innerHTML = arr[3]
 }
 
+if (performance.navigation.type == 1 || performance.navigation.type == 2) {
+	location.href='/dist/'
+	var req = indexedDB.deleteDatabase('ss');
+} else {
+	console.info("This page is not reloaded");
+}

@@ -4,6 +4,9 @@ let cate = document.querySelector('#cate-select')
 let form = document.querySelector('form')
 
 
+// let reload = confirm("are you sure you want to leave?");
+
+
 form.addEventListener('submit',(e)=>{
      e.preventDefault()
         let userDiff = e.target.children["0"].lastElementChild.value
@@ -67,8 +70,8 @@ function convertingCategory(category){
       computer: '18',
       sport: '21',
       geography: '22',
-      politics: '23',
-      history: '24'
+      mythology: '20',
+      history: '23'
   }
     if (category ==='General Knowledge'){
         let newCate = 'generalKnowledge'
@@ -87,3 +90,15 @@ async function getQuestion(category='9',difficulty='easy'){
     let quiz= await response.json()
     return quiz
 }
+
+
+
+if (performance.navigation.type == 1 || performance.navigation.type == 2) {
+    location.href = '/dist/'
+    var req = indexedDB.deleteDatabase('ss');
+} else {
+    console.info("This page is not reloaded");
+}
+// if (performance.navigation.type == 2) {
+//     //Do your code here
+// }

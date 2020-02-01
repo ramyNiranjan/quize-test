@@ -5,7 +5,6 @@
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   font-family: "Poppins", sans-serif;
-  letter-spacing: 8;
 }
 
 html {
@@ -62,7 +61,8 @@ label {
   font-size: 17px;
   letter-spacing: 1px;
   cursor: pointer;
-  margin: 6px 10px;
+  margin-bottom: 25px;
+  margin-top: 8px;
   -webkit-transition: all 0.4s ease-in;
   transition: all 0.4s ease-in;
 }
@@ -343,7 +343,8 @@ footer {
 .quiz-show {
   width: 100%;
   height: 100%;
-  position: absolute;
+  position: fixed;
+  overflow-y: scroll;
 }
 
 .quiz-show__num {
@@ -388,6 +389,7 @@ footer {
 
 .quiz-show__question {
   margin-top: 20px;
+  line-height: 1.5;
   display: -ms-grid;
   display: grid;
   place-items: center;
@@ -403,7 +405,7 @@ footer {
       grid-template-columns: fit-content(260px);
   text-align: center;
   color: white;
-  font-size: 15px;
+  font-size: 16px;
   font-weight: bold;
 }
 
