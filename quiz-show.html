@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <script
+      src="https://kit.fontawesome.com/7653ca745b.js"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/he/1.2.0/he.min.js"></script>
+    <link rel="stylesheet" href="./css/main.css" />
+    <title>Quiz</title>
+  </head>
+  <body>
+    <div class="water-mark">
+      <img src="./assets/question.svg" alt="" srcset="" />
+    </div>
+
+    <section class="quiz-show pop">
+      <div class="quiz-show__num"><span class="number">1</span>/10</div>
+      <div class="quiz-show__container">
+        <div class="quiz-show__timer">
+          <div class="quiz-show__countdown">10</div>
+        </div>
+      </div>
+      <div class="quiz-show__question">
+        <p class="quiz-show__question-text">
+          What is the shape of the toy invented by Hungarian professor Ernő
+          Rubik?
+        </p>
+      </div>
+      <form class="slide">
+        <div class="quiz-show__answer-card">
+          <div class="quiz-show__item">
+            <input
+              class="quiz-show__radio"
+              type="radio"
+              name="answer"
+              id="a-1"
+              value=""
+            />
+            <label class="quiz-show__label one" for="a-1">Cube</label>
+          </div>
+          <div class="quiz-show__item">
+            <input
+              class="quiz-show__radio"
+              type="radio"
+              name="answer"
+              id="a-2"
+              value=""
+            />
+            <label class="quiz-show__label two" for="a-2">Sphere</label>
+          </div>
+          <div class="quiz-show__item">
+            <input
+              class="quiz-show__radio"
+              type="radio"
+              name="answer"
+              id="a-3"
+              value=""
+            />
+            <label class="quiz-show__label three" for="a-3">Cylinder</label>
+          </div>
+          <div class="quiz-show__item">
+            <input
+              class="quiz-show__radio"
+              type="radio"
+              name="answer"
+              id="a-4"
+              value=""
+            />
+            <label class="quiz-show__label four" for="a-4">Pyramid</label>
+          </div>
+          <input class="btn input-submit" type="submit" value="Next" />
+        </div>
+      </form>
+    </section>
+
+    <footer>
+      <div class="footer-left">
+        Made with
+        <span
+          ><i class="far fa-heart"></i> & <i class="fas fa-coffee"></i
+        ></span>
+        in Högdalen, Stockholm
+      </div>
+      <div class="footer-right">
+        © Ramy Niranjan
+      </div>
+    </footer>
+    <script src="./scripts/getData.js"></script>
+  </body>
+</html>

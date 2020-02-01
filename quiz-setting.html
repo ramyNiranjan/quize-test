@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <script
+      src="https://kit.fontawesome.com/7653ca745b.js"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="stylesheet" href="./css/main.css" />
+    <title>Quiz</title>
+  </head>
+
+  <body>
+    <div class="water-mark">
+      <img src="./assets/question.svg" alt="" srcset="" />
+    </div>
+
+    <section class="main-quiz slide">
+      <form action="./quiz-show.html" method="GET" class="quiz-setting">
+        <div class="quiz-setting__difficult">
+          <label for="diff-select">Choose a difficulty</label>
+
+          <select name="diff" id="diff-select">
+            <option value="easy">Easy</option>
+            <option value="medium">Medium</option>
+            <option value="hard">Hard</option>
+          </select>
+        </div>
+        <div class="quiz-setting__category">
+          <label for="cate-select">Choose a Category</label>
+
+          <select name="cate" id="cate-select">
+            <option value="generalKnowledge">General Knowledge</option>
+            <option value="animals">Animals</option>
+            <option value="flim">Flim</option>
+            <option value="music">Music</option>
+            <option value="scienceNature">Science Nature</option>
+            <option value="computer">Computer</option>
+            <option value="sport">Sport</option>
+            <option value="geography">Geography</option>
+            <option value="politics">Politics</option>
+            <option value="history">History</option>
+          </select>
+        </div>
+        <input class="btn input-submit" type="submit" value="Let's Quiz" />
+      </form>
+    </section>
+
+    <footer>
+      <div class="footer-left">
+        Made with
+        <span
+          ><i class="far fa-heart"></i> & <i class="fas fa-coffee"></i
+        ></span>
+        in Högdalen, Stockholm
+      </div>
+      <div class="footer-right">
+        © Ramy Niranjan
+      </div>
+    </footer>
+    <script src="./scripts/fetch.js"></script>
+  </body>
+</html>
