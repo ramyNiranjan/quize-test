@@ -167,7 +167,7 @@ function populateQuiz(result,arr){
 }
 
 if (performance.navigation.type == 1 || performance.navigation.type == 2) {
-	location.href='/dist/'
+	location.href='/'
 	var req = indexedDB.deleteDatabase('ss');
 } else {
 	console.info("This page is not reloaded");
