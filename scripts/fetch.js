@@ -112,7 +112,7 @@ async function getQuestion(category='9',difficulty='easy'){
 
 
 if (performance.navigation.type == 1 || performance.navigation.type == 2) {
-    location.replace('/dist/')
+    location.replace('/')
     let req = indexedDB.deleteDatabase('ss');
 } else {
     console.info("This page is not reloaded");
