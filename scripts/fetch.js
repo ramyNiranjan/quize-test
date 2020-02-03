@@ -1,4 +1,8 @@
 
+document.addEventListener("DOMContentLoaded", ()=>{
+    indexedDB.deleteDatabase('ss');
+})
+
 let diff = document.querySelector('#diff-select')
 let cate = document.querySelector('#cate-select')
 let form = document.querySelector('form')
@@ -35,12 +39,7 @@ function redirectToAnotherPage(){
             window.location.replace('./quiz-show.html')
            
         }
-            
-       
-
     }
-    
-   
 }
 
 // this function deprecated
@@ -111,9 +110,14 @@ async function getQuestion(category='9',difficulty='easy'){
 
 
 
+// window.onhashchange = function () {
+//     location.replace('/dist/')
+//     let req = indexedDB.deleteDatabase('ss');
+// }
 if (performance.navigation.type == 1 || performance.navigation.type == 2) {
-    location.replace('/')
     let req = indexedDB.deleteDatabase('ss');
+    location.href='/'
+  
 } else {
     console.info("This page is not reloaded");
 }

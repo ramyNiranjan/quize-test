@@ -59,7 +59,7 @@ form.addEventListener('submit',(e)=>{
 					 modalInfo.innerHTML='Your are Quick'
 					 modalInfo.style.color ='#14ef38'
 					 gettingData__findingRightAnswer()
-					 let req = indexedDB.deleteDatabase('ss');
+					
 				 }, 1000);
 			
 
@@ -95,7 +95,7 @@ function countDown(){
 		 userAnswers.push(catchingUserAnswer(radio))
 		 modalInfo.innerHTML = 'Game over'
 		 gettingData__findingRightAnswer()
-		 let req = indexedDB.deleteDatabase('ss');
+	
 	 }, 1800)
 }
 }
@@ -177,9 +177,14 @@ function populateQuiz(result,arr){
 	label4.innerHTML = arr[3]
 }
 
+// window.onhashchange = function () {
+// 	location.replace( '/dist/quiz-setting.html')
+// 	let req = indexedDB.deleteDatabase('ss');
+// }
+
 if (performance.navigation.type == 1 || performance.navigation.type == 2) {
-	location.replace( '/quiz-setting.html')
-	let req = indexedDB.deleteDatabase('ss');
+		let req = indexedDB.deleteDatabase('ss');
+	location.href='/'
 } else {
 	console.info("This page is not reloaded");
 }

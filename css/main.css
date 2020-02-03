@@ -224,7 +224,7 @@ label {
 }
 
 .quiz-main {
-  margin-top: 10vh;
+  margin-top: 20vh;
   position: fixed;
   -webkit-transition: all 2s;
   transition: all 2s;
@@ -525,6 +525,32 @@ input[type="radio"] {
 input[type="radio"]:checked + label::after {
   -webkit-transform: scale(1);
           transform: scale(1);
+}
+
+@media (min-width: 500px) {
+  .quiz-show {
+    overflow-y: hidden;
+  }
+  .quiz-show__question-text {
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-columns: fit-content(400px);
+        grid-template-columns: fit-content(400px);
+    text-align: center;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+  .quiz-show__item {
+    -ms-grid-columns: 150px 240px;
+        grid-template-columns: 150px 240px;
+  }
 }
 
 .modal {
