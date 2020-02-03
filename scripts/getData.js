@@ -59,6 +59,7 @@ form.addEventListener('submit',(e)=>{
 					 modalInfo.innerHTML='Your are Quick'
 					 modalInfo.style.color ='#14ef38'
 					 gettingData__findingRightAnswer()
+					 let req = indexedDB.deleteDatabase('ss');
 				 }, 1000);
 			
 
@@ -94,6 +95,7 @@ function countDown(){
 		 userAnswers.push(catchingUserAnswer(radio))
 		 modalInfo.innerHTML = 'Game over'
 		 gettingData__findingRightAnswer()
+		 let req = indexedDB.deleteDatabase('ss');
 	 }, 1800)
 }
 }
