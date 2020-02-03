@@ -12,13 +12,15 @@ let timer = document.querySelector(".quiz-show__countdown")
 let timerBG = document.querySelector(".quiz-show__timer")
 let allLabel = document.querySelectorAll('.quiz-show__label')
 let question = document.querySelector('.quiz-show__question')
+let modalInfo = document.querySelector('.modal__info')
+let modalScore = document.querySelector('.modal__score')
+let modal = document.querySelector('.modal')
 let count = 1
-let startTime = 20
+let startTime = 30
 let countOfRight=0
 
 const userAnswers=[]
 let timeId = setInterval(countDown, 1000)
-
 
 
 function catchingUserAnswer(radio){
@@ -37,9 +39,6 @@ function catchingUserAnswer(radio){
 
 form.addEventListener('submit',(e)=>{
 	e.preventDefault()
-	
-	form.classList.add('slide1')
-	console.log(e.target.style.animationName='slide1')
 	radio.forEach(item => {
 		if (item.checked === false){
 			//validate
@@ -52,13 +51,20 @@ form.addEventListener('submit',(e)=>{
 				e.target.lastElementChild.lastElementChild.value = 'Finish'
 				clearInterval(timeId)
 				userAnswers.push(catchingUserAnswer(radio))
-				gettingData__findingRightAnswer()
-				//  setTimeout(() => {
-				// 	 form.style.display = 'none'
-				// 	 question.style.display = 'none' 
-				//  }, 1000);
-				//finishUp
+			
+				 setTimeout(() => {
+					 form.style.display = 'none'
+					 question.style.display = 'none'
+					
+					 modalInfo.innerHTML='Your are Quick'
+					 modalInfo.style.color ='#14ef38'
+					 gettingData__findingRightAnswer()
+				 }, 1000);
+			
+
+				
 			} if (count <= 10) {
+				if (count == 10) e.target.lastElementChild.lastElementChild.value = 'Finish'
 				userAnswers.push(catchingUserAnswer(radio))
 				  getDataFromIndexDB(count)
 					radio.forEach(item => {
@@ -68,7 +74,7 @@ form.addEventListener('submit',(e)=>{
 			}
 		}
 	})
-	form.classList.remove('slide1')
+	
 })
 
 
@@ -82,12 +88,13 @@ function countDown(){
   timer.innerHTML=startTime
   startTime--
  if(startTime==-1){
-	//  setTimeout(() => {
-	// 	 form.style.display = 'none'
-	// 	 question.style.display = 'none' 
-	// 	 userAnswers.push(catchingUserAnswer(radio))
-	// 	 gettingData__findingRightAnswer()
-	//  }, 1800)
+	 setTimeout(() => {
+		 form.style.display = 'none'
+		 question.style.display = 'none' 
+		 userAnswers.push(catchingUserAnswer(radio))
+		 modalInfo.innerHTML = 'Game over'
+		 gettingData__findingRightAnswer()
+	 }, 1800)
 }
 }
 
@@ -119,10 +126,12 @@ function gettingData__findingRightAnswer(){
 		       db.result.map(item=>{
              he.decode(item.right)
 						 arr.push(he.decode(item.right))})
-				console.log(tallyAnswers(arr,userAnswers))
-					
+					modalScore.innerHTML = tallyAnswers(arr, userAnswers)
+			
+				
+				
 					}
-
+			modal.style.transform='scale(1)'
 }}
 
 
@@ -167,8 +176,8 @@ function populateQuiz(result,arr){
 }
 
 if (performance.navigation.type == 1 || performance.navigation.type == 2) {
-	location.href='/'
-	var req = indexedDB.deleteDatabase('ss');
+	location.replace( '/dist/quiz-setting.html')
+	let req = indexedDB.deleteDatabase('ss');
 } else {
 	console.info("This page is not reloaded");
 }

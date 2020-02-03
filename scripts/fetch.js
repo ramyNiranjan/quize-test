@@ -2,6 +2,8 @@
 let diff = document.querySelector('#diff-select')
 let cate = document.querySelector('#cate-select')
 let form = document.querySelector('form')
+let spinner = document.querySelector('.water-mark__spinner')
+let main = document.querySelector('.main-quiz')
 
 
 // let reload = confirm("are you sure you want to leave?");
@@ -12,10 +14,10 @@ form.addEventListener('submit',(e)=>{
         let userDiff = e.target.children["0"].lastElementChild.value
         let userCate = e.target.children["1"].lastElementChild.value
         getQuestion(convertingCategory(userCate), userDiff).then(data => {
-            console.log(data)
-            createIndexDb()
+            console.log(data.results)
             addDataDataBase(data.results)
             redirectToAnotherPage()
+            
         })
   
     
@@ -24,33 +26,49 @@ form.addEventListener('submit',(e)=>{
 
 
 function redirectToAnotherPage(){
+     spinner.style.display='block'
+     main.style.opacity='0.2'
     let requestDB = window.indexedDB.open('ss')
     requestDB.onsuccess=()=>{
-        if(requestDB.result.objectStoreNames.contains('quiz'))
-            window.location.href = './quiz-show.html'
+        if(requestDB.result.objectStoreNames.contains('quiz')){
+            spinner.style.display = 'none' 
+            window.location.replace('./quiz-show.html')
+           
+        }
+            
+       
 
     }
+    
    
 }
 
-function createIndexDb(){
-    let requestDB=window.indexedDB.open('ss',1)
-    requestDB.onupgradeneeded=()=>{
-        let db=requestDB.result
-    db.createObjectStore('quiz',{autoIncrement:true})}
+// this function deprecated
+
+// function createIndexDb(){
+//     let requestDB=window.indexedDB.open('ss')
+//     requestDB.onupgradeneeded=()=>{
+//         let db=requestDB.result
+//     db.createObjectStore('quiz',{autoIncrement:true})}
   
-    requestDB.onerror = (e) => {
-        console.log(e)
-    }
+//     requestDB.onerror = (e) => {
+//         console.log(e)
+//     }
     
-}
+// }
 
 function addDataDataBase(data){
-    let requestDB = window.indexedDB.open('ss', 1)
+    let requestDB = window.indexedDB.open('ss')
+    requestDB.onupgradeneeded = () => {
+        let db = requestDB.result
+        db.createObjectStore('quiz', { autoIncrement: true })
+    }
     requestDB.onsuccess = () => {
-        let store = requestDB.result.transaction('quiz', 'readwrite').objectStore('quiz')
+        let tx = requestDB.result.transaction('quiz', 'readwrite')
+        let store = tx.objectStore('quiz')
+        console.log(store)
         for (let i = 0; i < data.length; i++) {
-            store.put({
+            store.add({
                 'quiz': `${data[i].question}`, 'right': `${data[i].correct_answer}`,
                 'wrong1': `${data[i].incorrect_answers[0]}`,
                 'wrong2': `${data[i].incorrect_answers[1]}`,
@@ -94,11 +112,8 @@ async function getQuestion(category='9',difficulty='easy'){
 
 
 if (performance.navigation.type == 1 || performance.navigation.type == 2) {
-    location.href = '/'
-    var req = indexedDB.deleteDatabase('ss');
+    location.replace('/dist/')
+    let req = indexedDB.deleteDatabase('ss');
 } else {
     console.info("This page is not reloaded");
 }
-// if (performance.navigation.type == 2) {
-//     //Do your code here
-// }

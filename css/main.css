@@ -53,6 +53,16 @@ label {
   position: absolute;
 }
 
+.water-mark__spinner {
+  display: none;
+  position: relative;
+  z-index: 2;
+  height: 100px;
+  top: 40%;
+  -webkit-transform: translateY(-40%);
+          transform: translateY(-40%);
+}
+
 .btn {
   background: #32f1de;
   padding: 10px 40px;
@@ -182,26 +192,39 @@ label {
   }
 }
 
-footer {
-  width: 100vw;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  font-size: 7px;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  padding: 8px 10px;
-  background: #000c0c;
-  color: #fff;
-  clear: both;
-  position: fixed;
-  left: 0;
-  bottom: 0;
+.slide1 {
+  -webkit-animation: slide1 0.5s;
+          animation: slide1 0.5s;
+}
+
+@-webkit-keyframes slide1 {
+  from {
+    opacity: 0;
+    -webkit-transform: translateX(-200vw);
+            transform: translateX(-200vw);
+  }
+  to {
+    opacity: 1;
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
+  }
+}
+
+@keyframes slide1 {
+  from {
+    opacity: 0;
+    -webkit-transform: translateX(-200vw);
+            transform: translateX(-200vw);
+  }
+  to {
+    opacity: 1;
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
+  }
 }
 
 .quiz-main {
-  margin-top: 20vh;
+  margin-top: 10vh;
   position: fixed;
   -webkit-transition: all 2s;
   transition: all 2s;
@@ -323,7 +346,7 @@ footer {
   overflow-y: scroll;
   border-radius: 10px;
   text-align: center;
-  text-indent: 20px;
+  text-indent: 3px;
   color: #fff;
   font-weight: 600;
   background: #585555;
@@ -392,7 +415,6 @@ footer {
   line-height: 1.5;
   display: -ms-grid;
   display: grid;
-  place-items: center;
   grid-gap: 10px;
   padding: 10px;
   letter-spacing: 1.5px;
@@ -407,6 +429,12 @@ footer {
   color: white;
   font-size: 16px;
   font-weight: bold;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .quiz-show form {
@@ -497,4 +525,77 @@ input[type="radio"] {
 input[type="radio"]:checked + label::after {
   -webkit-transform: scale(1);
           transform: scale(1);
+}
+
+.modal {
+  position: absolute;
+  background: #262b2e;
+  font-size: 12px;
+  color: #fff;
+  -ms-grid-columns: 250px;
+      grid-template-columns: 250px;
+  -ms-grid-rows: (90px)[4];
+      grid-template-rows: repeat(4, 90px);
+  border-radius: 20px;
+  margin-top: 50px;
+  display: -ms-grid;
+  display: grid;
+  place-items: center;
+  -webkit-transform: scale(0);
+          transform: scale(0);
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+}
+
+.modal__score {
+  font-size: 20px;
+  background: #fff;
+  height: 60px;
+  width: 60px;
+  text-align: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  border-radius: 50%;
+  border: 5px solid #298f32;
+  -webkit-box-shadow: 0 0 4px #18ea18;
+          box-shadow: 0 0 4px #18ea18;
+  color: #000000;
+}
+
+.modal__header {
+  letter-spacing: 1px;
+}
+
+.modal__play {
+  color: #000000;
+}
+
+.modal__info {
+  letter-spacing: 1px;
+  color: #f21818;
+}
+
+footer {
+  width: 100vw;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  font-size: 7px;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  padding: 8px 10px;
+  background: #000c0c;
+  color: #fff;
+  clear: both;
+  position: fixed;
+  left: 0;
+  bottom: 0;
 }
