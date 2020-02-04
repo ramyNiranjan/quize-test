@@ -16,7 +16,7 @@ let modalInfo = document.querySelector('.modal__info')
 let modalScore = document.querySelector('.modal__score')
 let modal = document.querySelector('.modal')
 let count = 1
-let startTime = 30
+let startTime = 60
 let countOfRight=0
 
 const userAnswers=[]
