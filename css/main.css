@@ -224,7 +224,7 @@ label {
 }
 
 .quiz-main {
-  margin-top: 20vh;
+  margin-top: 10vh;
   position: fixed;
   -webkit-transition: all 2s;
   transition: all 2s;
@@ -243,6 +243,23 @@ label {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+}
+
+.quiz-main__info {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: fit-content(220px);
+      grid-template-columns: fit-content(220px);
+  font-size: 10px;
+  text-align: center;
+  padding: 10px;
+  color: #dfff10;
+  letter-spacing: 1px;
+}
+
+.quiz-main__count {
+  font-size: 23px;
+  color: #14ef38;
 }
 
 .quiz-main__header {

@@ -42,8 +42,6 @@ form.addEventListener('submit',(e)=>{
 	radio.forEach(item => {
 		if (item.checked === false){
 			//validate
-			// console.log('validate')
-			
 		} else {
 				count++
 			if (count >10) {
@@ -152,7 +150,6 @@ function  tallyAnswers(arr1,arr2){
 function creatingRandomOrder(obj){
    
 	let randomval = []
-	console.log(obj)
 	let valArr = Object.values(obj)
 	valArr.splice(0, 1)
 	while(randomval.length<valArr.length){
@@ -177,14 +174,8 @@ function populateQuiz(result,arr){
 	label4.innerHTML = arr[3]
 }
 
-// window.onhashchange = function () {
-// 	location.replace( '/dist/quiz-setting.html')
-// 	let req = indexedDB.deleteDatabase('ss');
-// }
 
 if (performance.navigation.type == 1 || performance.navigation.type == 2) {
 		let req = indexedDB.deleteDatabase('ss');
 	location.href='/'
-} else {
-	console.info("This page is not reloaded");
 }

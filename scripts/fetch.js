@@ -1,13 +1,12 @@
 
-document.addEventListener("DOMContentLoaded", ()=>{
-    indexedDB.deleteDatabase('ss');
-})
+
 
 let diff = document.querySelector('#diff-select')
 let cate = document.querySelector('#cate-select')
 let form = document.querySelector('form')
 let spinner = document.querySelector('.water-mark__spinner')
 let main = document.querySelector('.main-quiz')
+
 
 
 // let reload = confirm("are you sure you want to leave?");
@@ -18,7 +17,6 @@ form.addEventListener('submit',(e)=>{
         let userDiff = e.target.children["0"].lastElementChild.value
         let userCate = e.target.children["1"].lastElementChild.value
         getQuestion(convertingCategory(userCate), userDiff).then(data => {
-            console.log(data.results)
             addDataDataBase(data.results)
             redirectToAnotherPage()
             
@@ -65,7 +63,6 @@ function addDataDataBase(data){
     requestDB.onsuccess = () => {
         let tx = requestDB.result.transaction('quiz', 'readwrite')
         let store = tx.objectStore('quiz')
-        console.log(store)
         for (let i = 0; i < data.length; i++) {
             store.add({
                 'quiz': `${data[i].question}`, 'right': `${data[i].correct_answer}`,
@@ -81,7 +78,7 @@ function convertingCategory(category){
   let cateList={
       generalKnowledge: '9',
       animals: '27',
-      flim: '11',
+      film: '11',
       music: '12',
       scienceNature: '17',
       computer: '18',
@@ -110,14 +107,9 @@ async function getQuestion(category='9',difficulty='easy'){
 
 
 
-// window.onhashchange = function () {
-//     location.replace('/dist/')
-//     let req = indexedDB.deleteDatabase('ss');
-// }
+
 if (performance.navigation.type == 1 || performance.navigation.type == 2) {
     let req = indexedDB.deleteDatabase('ss');
     location.href='/'
   
-} else {
-    console.info("This page is not reloaded");
 }
