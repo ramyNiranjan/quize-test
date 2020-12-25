@@ -4,3 +4,4 @@
 - Click yes to play the game, then select difficulty and category
 - Each questions have four alternative to choose
 - To make more fun, i added a timer so,you need to hurry up
+###### [Click here to see live demo](https://quizzyfy.netlify.app/)
